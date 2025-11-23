@@ -281,7 +281,7 @@ function setupPlayerPage() {
         
         errorScreen.innerHTML = `
             <h3>Oops, something went wrong...</h3>
-            <p>ЕЁ ЛИЦО СДЕЛАНО ДЛЯ РАДИО.</p>
+            <p>HER FACE WAS MADE FOR RADIO.</p>
         `;
         
         wrapper.appendChild(errorScreen);
@@ -313,7 +313,7 @@ function setupPlayerPage() {
         
         errorScreen.innerHTML = `
             <h3>Oops, something went wrong...</h3>
-            <p>ЕЁ ЛИЦО СДЕЛАНО ДЛЯ РАДИО.</p>
+            <p>HER FACE WAS MADE FOR RADIO.</p>
         `;
         
         wrapper.appendChild(errorScreen);
