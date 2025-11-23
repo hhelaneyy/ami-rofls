@@ -2,11 +2,9 @@
 
 // ===== СПИСОК ВИДЕО =====
 const STREAM_IDS = [
-  "3GQVQu92FbU",
-  "KKRgNAZQJEA",
-  "dhAIlVlYphY",
-  "hzw7k0nJyv4",
-  "23123"
+  "3GQVQu92FbU", // Рабочий стрим
+  "KKRgNAZQJEA", // Рабочий стрим
+  "23123"        // <--- СЕКРЕТНЫЙ КОД ДЛЯ ОШИБКИ (ПАСХАЛКА)
 ];
 
 const FUNFACTS = [
@@ -25,7 +23,7 @@ const FUNFACTS = [
   "i stream on wifi again",
   "uhm uhm uhm uh uh uhm uh hm",
   "the female lombax (lorax) is BACK BABYYY",
-  "stream ends when i clear world is mine on normal or i break down crying",
+  "luigi.",
   "ive never speedran anything ever before in my life but this game is cute and fun :3",
   "bowserrr BOWSEHEHRFRR WHEN I GET YUO FOR TAKINGNMY WIFEEE!!!!",
   "im very sleepy i cant think of a funny joke",
@@ -53,7 +51,7 @@ const FUNFACTS = [
   "please stand by"
 ];
 
-const SECRET_FACT = "<span style='color:#ff4081; cursor:pointer;' onclick='window.location.href=\"crying.html\"'>luigi. (CLICK ME)</span>";
+const SECRET_FACT = "<span style='color:#ff4081; cursor:pointer;' onclick='window.location.href=\"crying.html\"'>stream ends when i clear world is mine on normal or i break down crying (CLICK ME)</span>";
 
 // ===== Storage =====
 function getAppData() {
@@ -212,6 +210,8 @@ function startMarathonTimer() {
 // ===== Achievements Page Render =====
 function renderAchievements() {
   const marathonTimer = JSON.parse(localStorage.getItem("marathonTimer")) || { elapsed: 0 };
+  
+  // !!! ВАЖНО: Добавил "voxtek" в список !!!
   const ids = ["trulyFan", "marathonAmi", "secretCry", "voxtek"];
   
   ids.forEach(id => {
@@ -243,11 +243,10 @@ function renderAchievements() {
 
 // ===== SECRET LINK SPAWNER =====
 function trySpawnSecretNav() {
-    // Если мы уже на player.html, кнопку не показываем
     if (window.location.pathname.includes("player.html")) return;
 
     // Шанс 1% (0.01)
-    const CHANCE = 0.01;
+    const CHANCE = 0.01; 
 
     if (Math.random() < CHANCE) {
         const nav = document.querySelector('.nav');
@@ -256,18 +255,18 @@ function trySpawnSecretNav() {
             const link = document.createElement('a');
             link.href = 'player.html';
             link.className = 'nav-link secret-link';
-            link.textContent = '👁️ ???';
+            link.textContent = '👁️ ???'; 
             nav.appendChild(link);
         }
     }
 }
 
-// ===== PLAYER PAGE SETUP (Hybrid: Check + Real Embed) =====
+// ===== PLAYER PAGE SETUP (With Secret Error ID) =====
 function setupPlayerPage() {
     const container = document.getElementById("player-container");
     if (!container) return;
 
-    container.innerHTML = ""; // Очистка
+    container.innerHTML = ""; 
 
     const randomVideoId = STREAM_IDS[Math.floor(Math.random() * STREAM_IDS.length)];
     
@@ -282,22 +281,19 @@ function setupPlayerPage() {
         
         errorScreen.innerHTML = `
             <h3>Oops, something went wrong...</h3>
-            <p>HER FACE WAS MADE FOR RADIO.</p>
+            <p>ЕЁ ЛИЦО СДЕЛАНО ДЛЯ РАДИО.</p>
         `;
         
         wrapper.appendChild(errorScreen);
         container.appendChild(wrapper);
-        return; // Прерываем функцию, дальше не идем
+        return; 
     }
 
-    // --- ОБЫЧНАЯ ЛОГИКА ДЛЯ ОСТАЛЬНЫХ ВИДЕО ---
-    
-    // Проверяем, существует ли видео (через загрузку превью)
+    // --- ОБЫЧНАЯ ЛОГИКА ---
     const imgTester = new Image();
     imgTester.src = `https://img.youtube.com/vi/${randomVideoId}/maxresdefault.jpg`;
 
     imgTester.onload = function() {
-        // УСПЕХ -> Вставляем IFRAME
         const iframe = document.createElement("iframe");
         const origin = window.location.origin;
 
@@ -311,13 +307,13 @@ function setupPlayerPage() {
     };
 
     imgTester.onerror = function() {
-        // ОШИБКА (Видео удалено) -> Тоже показываем экран ошибки
+        // Если видео недоступно — тоже показываем ошибку
         const errorScreen = document.createElement("div");
         errorScreen.className = "player-error";
         
         errorScreen.innerHTML = `
             <h3>Oops, something went wrong...</h3>
-            <p>HER FACE WAS MADE FOR RADIO.</p>
+            <p>ЕЁ ЛИЦО СДЕЛАНО ДЛЯ РАДИО.</p>
         `;
         
         wrapper.appendChild(errorScreen);
@@ -330,34 +326,16 @@ function setupLogoModal() {
     const logo = document.getElementById('mainLogo');
     const modal = document.getElementById('logoModal');
     
-    if (!logo || !modal) return; // Проверка, что элементы существуют
+    if (!logo || !modal) return; 
 
     const closeBtn = modal.querySelector('.close-btn');
 
-    // 1. Показать модальное окно при клике на логотип
-    logo.addEventListener('click', () => {
-        modal.style.display = 'flex';
-    });
-
-    // 2. Скрыть при клике на крестик
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    // 3. Скрыть при клике за пределами контента (на оверлее)
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-
-    // 4. Скрыть при нажатии ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
-            modal.style.display = 'none';
-        }
-    });
+    logo.addEventListener('click', () => { modal.style.display = 'flex'; });
+    closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.style.display = 'none'; });
 }
+
 
 // ===== Reset =====
 function resetAll() {
@@ -379,12 +357,19 @@ function resetAll() {
 
 // ===== Init =====
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Пробуем заспавнить секретную кнопку
   trySpawnSecretNav();
 
-  // 2. Настраиваем плеер, если мы на странице плеера
   if (window.location.pathname.includes("player.html")) {
       setupPlayerPage();
+      
+      try {
+          history.replaceState(null, 'Player', 'Player'); 
+      } catch (e) {
+          console.error("Failed to update URL history:", e);
+      }
+      
+      // !!! ВАЖНО: ВОТ ЗДЕСЬ ВЫДАЕТСЯ ДОСТИЖЕНИЕ VOXTEK !!!
+      unlockAchievement("voxtek", "Voxtek Employee"); 
   }
 
   updateFactCounter();
@@ -419,5 +404,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   startMarathonTimer();
-  setupLogoModal();
+  setupLogoModal(); 
 });
