@@ -4,6 +4,8 @@
 const STREAM_IDS = [
   "3GQVQu92FbU", // Рабочий стрим
   "KKRgNAZQJEA", // Рабочий стрим
+  "hzw7k0nJyv4",
+  "MIb4ZtAAH-U",
   "23123"        // <--- СЕКРЕТНЫЙ КОД ДЛЯ ОШИБКИ (ПАСХАЛКА)
 ];
 
@@ -211,7 +213,7 @@ function startMarathonTimer() {
 function renderAchievements() {
   const marathonTimer = JSON.parse(localStorage.getItem("marathonTimer")) || { elapsed: 0 };
   
-  // !!! ВАЖНО: Добавил "voxtek" в список !!!
+  // Добавил "voxtek" в список
   const ids = ["trulyFan", "marathonAmi", "secretCry", "voxtek"];
   
   ids.forEach(id => {
@@ -297,7 +299,7 @@ function setupPlayerPage() {
         const iframe = document.createElement("iframe");
         const origin = window.location.origin;
 
-        iframe.src = `https://www.youtube.com/embed/${randomVideoId}?autoplay=1&mute=1&controls=1&playsinline=1&origin=${origin}`;
+        iframe.src = `https://www.youtube.com/embed/${randomVideoId}?autoplay=1&mute=0.5&controls=1&playsinline=1&origin=${origin}`;
         iframe.title = "Ami Stream";
         iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
         iframe.allowFullscreen = true;
@@ -358,9 +360,16 @@ function resetAll() {
 // ===== Init =====
 document.addEventListener("DOMContentLoaded", () => {
   trySpawnSecretNav();
+
+  if (window.location.pathname.includes("player.html")) {
+      setupPlayerPage();
       
-    // !!! ВАЖНО: ВОТ ЗДЕСЬ ВЫДАЕТСЯ ДОСТИЖЕНИЕ VOXTEK !!!
-    unlockAchievement("voxtek", "Voxtek Employee"); 
+      // Я убрал блок try/catch с history.replaceState, 
+      // чтобы ссылка оставалась .../player.html
+      
+      // !!! ВЫДАЧА ДОСТИЖЕНИЯ !!!
+      unlockAchievement("voxtek", "Voxtek Employee"); 
+  }
 
   updateFactCounter();
   renderAchievements();
