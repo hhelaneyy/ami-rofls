@@ -358,19 +358,9 @@ function resetAll() {
 // ===== Init =====
 document.addEventListener("DOMContentLoaded", () => {
   trySpawnSecretNav();
-
-  if (window.location.pathname.includes("player.html")) {
-      setupPlayerPage();
       
-      try {
-          history.replaceState(null, 'Player', 'Player'); 
-      } catch (e) {
-          console.error("Failed to update URL history:", e);
-      }
-      
-      // !!! ВАЖНО: ВОТ ЗДЕСЬ ВЫДАЕТСЯ ДОСТИЖЕНИЕ VOXTEK !!!
-      unlockAchievement("voxtek", "Voxtek Employee"); 
-  }
+    // !!! ВАЖНО: ВОТ ЗДЕСЬ ВЫДАЕТСЯ ДОСТИЖЕНИЕ VOXTEK !!!
+    unlockAchievement("voxtek", "Voxtek Employee"); 
 
   updateFactCounter();
   renderAchievements();
