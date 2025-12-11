@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ami Kaboom — Secret Stream</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <img src="assets/images/cappie.png" alt="Ami Logo" class="logo"/>
+    <nav class="nav">
+      <a href="/" id="home" class="nav-link active">Home</a>
+      <a href="facts" id="facts" class="nav-link">Funfacts</a>
+      <a href="achievements" id="achievements" class="nav-link">Achievements</a>
+    </nav>
+  </header>
+
+    <div class="achievement-toast" id="achievementToast">
+        <div class="achievement-icon">🏆</div>
+        <div class="achievement-text">
+        <h3 id="toastTitle">New Achievement!</h3>
+        <p id="toastSubtitle">...</p>
+        </div>
+    </div>
+
+  <main class="center-content page-enter">
+    <div class="glass-panel" style="padding: 40px; width: 100%; max-width: 900px;">
+        <h2 style="margin-bottom: 10px;">✨ Secret Archive Found! ✨</h2>
+        <p class="subtitle" style="margin-bottom: 30px;">You got lucky! Enjoy this random stream (or video) as much as you want.</p>
+        
+        <div class="video-wrapper">
+            <div id="player-container"></div>
+        </div>
+
+        <a href="index.html" class="btn primary mt-40">STAY BACK</a>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

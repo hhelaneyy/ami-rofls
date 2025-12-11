@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ami Kaboom — Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <img src="assets/images/кепочка.png" alt="Ami Logo" id="mainLogo" class="logo clickable"/>
+    <nav class="nav">
+      <a href="/" class="nav-link" data-page="home">Home</a> 
+      <a href="/facts" class="nav-link" data-page="facts">Funfacts</a>
+      <a href="/achievements" id="achievements" class="nav-link" data-page="achievements">Achievements</a>
+    </nav>
+</header>
+
+  <main class="center-content page-enter">
+    <div class="glass-panel" style="padding: 60px; max-width: 800px;">
+        <h1 class="title">uhh.. is this the ami website??</h1>
+        <p class="subtitle">Я люблю тебя Ami!! 💖</p>
+        <div class="mt-20">
+            <a href="facts.html" class="btn primary">Learn Facts</a>
+        </div>
+    </div>
+  </main>
+
+  <div id="logoModal" class="modal-overlay">
+    <div class="modal-content glass-panel">
+        <span class="close-btn">&times;</span>
+        <img id="modalImage" src="assets/images/кепочка.png" alt="Ami Logo Large" class="modal-image-large"/>
+        <h3 id="modalTitle" class="pink-text">Cappy & Ami</h3>
+        <p id="modalDescription">This is art by user Yuki. After this, I don't see Cappy as a character anymore, just as a competitor.</p>
+    </div>
+  </div>
+
+  <div class="achievement-toast" id="achievementToast" aria-live="polite">
+    <div class="achievement-icon">🏆</div>
+    <div class="achievement-text">
+      <h3 id="toastTitle">Unlocked!</h3>
+      <p id="toastSubtitle">Prize...</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

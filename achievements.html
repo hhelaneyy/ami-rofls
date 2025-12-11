@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ami Kaboom — Achievements</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="header">
+    <img src="assets/images/heard.jpg" alt="Ami Logo" id="mainLogo" class="logo clickable"/>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="facts.html" class="nav-link">Funfacts</a>
+      <a href="achievements.html" class="nav-link active">Achievements</a>
+    </nav>
+  </header>
+
+  <main class="center-content page-enter">
+    <h2>Your Achievements</h2>
+
+    <div id="achievements-container" class="ach-grid">
+      <div class="achievement-card locked" id="ach_trulyFan">
+        <div class="emoji" id="ach_trulyFan_emoji">🔒</div>
+        <div class="info">
+          <h3 class="ach-title">Truly Fan</h3>
+          <p class="ach-desc">Collect all funfacts from Ami.</p>
+          <small id="factProgress" class="achievement-counter">0 / 0 collected</small>
+        </div>
+      </div>
+
+      <div class="achievement-card locked" id="ach_marathonAmi">
+        <div class="emoji" id="ach_marathonAmi_emoji">🔒</div>
+        <div class="info">
+          <h3 class="ach-title">Marathon with Ami</h3>
+          <p class="ach-desc">'Creepy stuff' huh...</p>
+          <small id="marathonProgress" class="achievement-counter">0 / 300 seconds</small>
+        </div>
+      </div>
+
+      <div class="achievement-card locked" id="ach_secretCry">
+        <div class="emoji" id="ach_secretCry_emoji">🔒</div>
+        <div class="info">
+          <h3 class="ach-title">WHAT THE F#CK??</h3>
+          <p class="ach-desc">Find the hidden secrets...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="achievement-card locked" id="ach_voxtek">
+      <div class="emoji" id="ach_voxtek_emoji">🔒</div>
+      <div class="info">
+        <h3 class="ach-title">Voxtek Employee</h3>
+        <p class="ach-desc">Access the video player (?)</p>
+      </div>
+    </div>
+
+    <button id="resetAchievements" class="btn danger mt-40">Reset Progress</button>
+  </main>
+
+  <div class="achievement-toast" id="achievementToast">
+    <div class="achievement-icon">🏆</div>
+    <div class="achievement-text">
+      <h3 id="toastTitle">New Achievement!</h3>
+      <p id="toastSubtitle">...</p>
+    </div>
+  </div>
+
+  <div id="logoModal" class="modal-overlay">
+    <div class="modal-content glass-panel">
+        <span class="close-btn">&times;</span>
+        <img id="modalImage" src="assets/images/heard.jpg" alt="Ami Logo Large" class="modal-image-large"/>
+        <h3 id="modalTitle" class="pink-text">what tf is this</h3>
+        <p id="modalDescription">I dont know what is this. Just.. uh.. forget about that.</p>
+    </div>
+  </div>
+
+  <div id="confirmModal" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-emoji">❓</div>
+      <h3 class="modal-title">Reset Everything?</h3>
+      <p class="modal-text">You will lose all badges and facts.</p>
+      <div class="modal-actions">
+        <button id="confirmYes" class="btn danger">Yes, Reset</button>
+        <button id="confirmNo" class="btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
