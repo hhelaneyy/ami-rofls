@@ -255,7 +255,7 @@ function trySpawnSecretNav() {
         if (nav) {
             console.log("Secret revealed!");
             const link = document.createElement('a');
-            link.href = 'player.html';
+            link.href = '/player';
             link.className = 'nav-link secret-link';
             link.textContent = '👁️ ???'; 
             nav.appendChild(link);
